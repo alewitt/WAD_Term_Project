@@ -11,6 +11,7 @@
     <div class="uploadContainer">
       <span>Upload</span>
       <input id="uploadBtn" type="button" name="upload" class="uploadBtn" value="Upload">
+      <input type="file" id="fileinput" multiple="multiple" accept="image/*" />
     </div>
 
     <!-- available selections -->
@@ -29,10 +30,22 @@
     <!-- upload preview modal -->
     <div id="uploadPreviewModal" class="modalContainer">
       <div class="modalContent">
-        <span class="modalCancel">Cancel</span>
-        <!-- show preview and write name/description -->
+        <!-- modal header -->
+        <div class="modalHeader">
+          <span class="modalTitle">Enter Info for Uploads</span>
+          <span class="modalCancel">Cancel</span>
+        </div>
 
-        <input id="modalUploadBtn" type="button" name="upload" class="modalUploadBtn" value="Upload">
+        <!-- show preview and write name/description -->
+        <div id="modalImgContainer">
+
+        </div>
+
+        <!-- modal footer -->
+        <div class="modalFooter">
+          <input id="modalUploadBtn" type="button" name="upload" class="modalUploadBtn" value="Upload">
+        </div>
+
       </div>
     </div>
 
