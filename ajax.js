@@ -42,13 +42,63 @@ $(window).click(function(event){
           throw "File Type must be an image";
         }
 
-        var thumb = document.createElement("div");
-        thumb.classList.add('thumbnail');
+        // main container for each image uploaded
+        var uploadItem = document.createElement("div");
+        uploadItem.classList.add('modalUploadItem');
+
+
+        // child container just for image thumbnail
+        var uploadImg = document.createElement("div");
+        uploadImg.classList.add('modalUploadImg');
+        uploadItem.appendChild(uploadImg);
 
         var img = document.createElement("img");
         img.file = file;
-        thumb.appendChild(img);
-        gallery.appendChild(thumb);
+        uploadImg.appendChild(img);
+
+
+        // chile container for image information
+        var uploadForm = document.createElement("div");
+        uploadForm.classList.add('modalUploadForm');
+        uploadItem.appendChild(uploadForm);
+
+        // Display Name input
+        var label = document.createElement("label");
+        label.innerText = "Display Name";
+        var br = document.createElement("br");
+        label.appendChild(br);
+        var input = document.createElement("input");
+        input.setAttribute("placeholder", "Happy Josh");
+        label.appendChild(input);
+        var br = document.createElement("br");
+        label.appendChild(br);
+        var br = document.createElement("br");
+        label.appendChild(br);
+        uploadForm.appendChild(label);
+
+        // Description input
+        var label = document.createElement("label");
+        label.innerText = "Description";
+        var br = document.createElement("br");
+        label.appendChild(br);
+        var input = document.createElement("input");
+        input.setAttribute("placeholder", "Josh is in a good mood.");
+        label.appendChild(input);
+        var br = document.createElement("br");
+        label.appendChild(br);
+        var br = document.createElement("br");
+        label.appendChild(br);
+        uploadForm.appendChild(label);
+
+        // Remove Buttom
+        var input = document.createElement("input");
+        input.setAttribute("id", "removeImgBtn");
+        input.setAttribute("type", "button");
+        input.setAttribute("name", "uploadForm");
+        input.setAttribute("value", "Remove");
+        uploadForm.appendChild(input);
+
+        gallery.appendChild(uploadItem);
 
         // Using FileReader to display the image content
         var reader = new FileReader();
