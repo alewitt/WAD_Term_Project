@@ -1,6 +1,6 @@
 
   var modalContainer = $('#uploadPreviewModal');
-  $('#modalBtn').click(function(){
+  $('#uploadBtn').click(function(){
     modalContainer.show();
   });
   $('.modalCancel').click(function(){

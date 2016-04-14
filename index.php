@@ -10,7 +10,7 @@
     <!-- upload more images -->
     <div class="uploadContainer">
       <span>Upload</span>
-      <input id="modalBtn" type="button" name="upload" class="uploadBtn" value="upload">
+      <input id="uploadBtn" type="button" name="upload" class="uploadBtn" value="Upload">
     </div>
 
     <!-- available selections -->
@@ -31,11 +31,9 @@
       <div class="modalContent">
         <span class="modalCancel">Cancel</span>
         <!-- show preview and write name/description -->
-        <p>
-          hey there
-        </p>
-      </div>
 
+        <input id="modalUploadBtn" type="button" name="upload" class="modalUploadBtn" value="Upload">
+      </div>
     </div>
 
     <script src="/js/jquery-2.2.2.js"></script>
