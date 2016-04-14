@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <h1 class="title">The Moods Of Joshy</h1>
     <!-- upload more images -->
     <div class="uploadContainer">
       <span>Upload</span>

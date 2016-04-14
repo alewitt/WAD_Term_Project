@@ -1,4 +1,13 @@
 
+.title{
+  margin-left: 15%;
+  font-size: 5rem;
+  text-shadow: 3px 3px 5px rgba(51, 153, 255, 0.4);
+  border-bottom: 5px groove #424040;
+  width: 26%;
+  line-height: 40px;
+}
+
 .uploadContainer{
   margin: auto;
   margin-top: 5%;
