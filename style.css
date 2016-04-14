@@ -70,9 +70,9 @@
 
 .imgContainer{
   border: 3px solid #0080c0;
+  border-radius: 10px/10px;
   background-color: #99ddff;
   padding: 2.5rem;
-  border-radius: 10px/10px;
 
   min-height: 30rem;
   width: 35%;
@@ -126,4 +126,39 @@ body {
 html{
   font-size: 10px;
   font-family: sans-serif;
+}
+
+.modalContainer{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modalContent{
+  margin: 15% auto;
+  width: 65%;
+  padding: 2.5rem;
+
+  border: 3px solid #0080c0;
+  border-radius: 10px/10px;
+  background-color: #ccffff;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.2);
+}
+
+.modalCancel{
+  color: rgba(255, 0, 0, .4);
+  font-size: 2rem;
+  font-weight: bold;
+  float: right;
+}
+
+.modalCancel:hover, .modalCancel:focus{
+  color: rgba(255, 0, 0, 1);
+  cursor: pointer;
+  text-decoration: none;
 }

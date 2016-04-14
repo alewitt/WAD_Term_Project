@@ -1,3 +1,18 @@
+
+  var modalContainer = $('#uploadPreviewModal');
+  $('#modalBtn').click(function(){
+    modalContainer.show();
+  });
+  $('.modalCancel').click(function(){
+    modalContainer.hide();
+  });
+  $(window).click(function(event){
+    if ($(event.target).is(modalContainer)) {
+      modalContainer.hide();
+    }
+  });
+
+
 function add_input_change_listener(inputEl, json){
   inputEl.on('change', function(){
     var chosen = $('input[name=joshMood]:checked', '#joshForm').val();
