@@ -22,7 +22,7 @@
 
     <!-- image view area -->
     <div class="imgContainer">
-
+      <img src="pix/default.jpg" alt="default image" class="picture"/>
     </div>
 
     <script src="/js/jquery-2.2.2.js"></script>
