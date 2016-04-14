@@ -1,27 +1,118 @@
-.picture{
-  max-height: 25rem;
-  width: auto;
-  float: right;
-}
 
-.selection .radio{
-  margin-left: 2rem;
-  font-size: 2rem;
-}
+.uploadContainer{
+  margin: auto;
+  margin-top: 5%;
+  position: relative;
 
-.formContainer{
-  margin-top: 10%;
   border: 3px solid #0080c0;
   background-color: #99ddff;
   padding: 2.5rem;
   border-radius: 10px/10px;
-  height: 30rem;
+
+  height: 16rem;
+  width: 70%;
+
+  font-size: 5rem;
 }
 
-body {
-  background-color: #c2c5bc;
+.uploadContainer span{
+  position: absolute;
+  left: 5rem;
+  top: 2.5rem;
+}
+
+.uploadBtn{
+  font-size: 2.5rem;
+  width: 10%;
+
+  position: absolute;
+  right: 5rem;
+  bottom: 2.5rem;
+}
+
+.formContainer{
+  border: 3px solid #0080c0;
+  background-color: #99ddff;
+  padding: 2.5rem;
+  border-radius: 10px/10px;
+
+  min-height: 20rem;
+  width: 30%;
+  float: left;
+
+  margin-top: 2.5%;
+  margin-left: 15%;
+}
+
+
+.formContainer .radio{
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 2.5rem;
+}
+
+.formContainer label{
+  max-width: 100%;
+  font-weight: 700;
+}
+
+.imgContainer{
+  border: 3px solid #0080c0;
+  background-color: #99ddff;
+  padding: 2.5rem;
+  border-radius: 10px/10px;
+
+  min-height: 30rem;
+  width: 35%;
+  float: left;
+  margin-top: 2.5%;
+  margin-left: 5%;
+  text-align: center;
+}
+
+.picture{
+  max-width: 100%;
+  max-height: 50rem;
 }
 
 legend {
   font-size: 4rem;
+  display: block;
+  width: 50%;
+  padding: 0;
+  padding-left: 2rem;
+  margin-bottom: 20px;
+  line-height: inherit;
+  color: #333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+fieldset{
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: block;
+}
+
+div{
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #c2c5bc;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.42857143;
+  font-size: 14px;
+  margin: 0;
+  display: block;
+}
+
+html{
+  font-size: 10px;
+  font-family: sans-serif;
 }

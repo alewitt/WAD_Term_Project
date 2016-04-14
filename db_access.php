@@ -1,30 +1,14 @@
 <?php
-require('/usr/local/www/hw2-creds.php');
+require('/usr/local/www/term_project_creds.php');
 
 try {
 
-  $conn = new PDO('mysql:host=localhost;dbname=HW2', $db_user, $db_pass);
+  $conn = new PDO('mysql:host=localhost;dbname=TERM_PROJECT', $db_user, $db_pass);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  function get_names($conn){
-    $stmt = $conn->prepare('SELECT name FROM Joshes');
-    $stmt->execute();
-    $arr = [];
-    while($row = $stmt->fetch()){
-      $arr[] = $row['name'];
-    }
-    return $arr;
-  }
-
-  function get_urls($conn){
-    $stmt = $conn->prepare('SELECT url FROM Joshes');
-    $stmt->execute();
-    $arr = [];
-    while($row = $stmt->fetch()){
-      $arr[] = $row['url'];
-    }
-    return $arr;
-  }
+  $names = [];
+  $urls = [];
+  $pix_count = 0;
 
   function get_pix_count($conn){
     $stmt = $conn->prepare('SELECT COUNT(*) FROM Joshes');
@@ -32,32 +16,52 @@ try {
     return $stmt->fetchColumn();
   }
 
-  $names = get_names($conn);
-  $urls = get_urls($conn);
-  $pix_count = get_pix_count($conn);
+  function get_all_data($conn, &$names, &$urls, &$pix_count){
+    $stmt = $conn->prepare('SELECT * FROM Joshes');
+    $stmt->execute();
+    while($row = $stmt->fetch()){
+      $names[] = $row['name'];
+      $urls[] = $row['url'];
+      $pix_count = get_pix_count($conn);
+    }
+  }
 
-  function get_name($conn, $id, $pix_count, $names){
-    if($id <= $pix_count-1){
-      return $names[$id];
+  function get_name($conn, $id, &$names, &$urls, &$pix_count){
+    get_all_data($conn, $names, $urls, $pix_count);
+    if($id <= $pix_count){
+      return $names[$id-1];
     } else {
       return 'No Match Found';
     }
   }
 
-  function get_url($conn, $id, $pix_count, $urls){
-    if($id <= $pix_count-1){
-      return $urls[$id];
+  function get_url($conn, $id, &$names, &$urls, &$pix_count){
+    get_all_data($conn, $names, $urls, $pix_count);
+    if($id <= $pix_count){
+      return $urls[$id-1];
     } else {
       return 'No Match Found';
     }
   }
 
 
-  if(isset($_GET['joshMood'])){
-    $image = get_url($conn, $_GET['joshMood'], $pix_count, $urls);
+  if(isset($_GET['selectedImg'])){
+    $image = get_url($conn, htmlspecialchars($_GET['selectedImg']), $pix_count, $urls);
 
     $reply = [
-      'image' => $image,
+      'url' => $image,
+    ];
+
+    echo json_encode($reply);
+  }
+
+  if(isset($_GET['allMoods'])){
+    get_all_data($conn, $names, $urls, $pix_count);
+
+    $reply = [
+      'names' => $names,
+      'urls' => $urls,
+      'pix_count' => $pix_count
     ];
 
     echo json_encode($reply);
