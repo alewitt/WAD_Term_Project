@@ -1,0 +1,27 @@
+.picture{
+  max-height: 25rem;
+  width: auto;
+  float: right;
+}
+
+.selection .radio{
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.formContainer{
+  margin-top: 10%;
+  border: 3px solid #0080c0;
+  background-color: #99ddff;
+  padding: 2.5rem;
+  border-radius: 10px/10px;
+  height: 30rem;
+}
+
+body {
+  background-color: #c2c5bc;
+}
+
+legend {
+  font-size: 4rem;
+}
