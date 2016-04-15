@@ -27,11 +27,20 @@ $(window).click(function(event){
   }
 });
 
+function add_btn_listeners(){
+  $('.removeImgBtn').on('click', function(){
+    var count = $(this).data("count");
+    $('#modalUploadForm_'+count).toggleClass('removed');
+    $(this).attr('value', 'Restore');
+  });
+}
+
+
 (function(){
   /**
    * Created by remi on 18/01/15.
    */
-    function previewImage(file) {
+    function previewImage(file, count) {
         var galleryId = "modalImgContainer";
 
         var gallery = document.getElementById(galleryId);
@@ -60,6 +69,7 @@ $(window).click(function(event){
         // chile container for image information
         var uploadForm = document.createElement("div");
         uploadForm.classList.add('modalUploadForm');
+        uploadItem.setAttribute("id", "modalUploadForm_"+count)
         uploadItem.appendChild(uploadForm);
 
         // Display Name input
@@ -92,11 +102,12 @@ $(window).click(function(event){
 
         // Remove Buttom
         var input = document.createElement("input");
-        input.setAttribute("id", "removeImgBtn");
+        input.setAttribute("class", "removeImgBtn");
         input.setAttribute("type", "button");
         input.setAttribute("name", "uploadForm");
         input.setAttribute("value", "Remove");
-        uploadForm.appendChild(input);
+        input.setAttribute("data-count", count);
+        uploadItem.appendChild(input);
 
         gallery.appendChild(uploadItem);
 
@@ -110,8 +121,9 @@ $(window).click(function(event){
     uploadfiles.addEventListener('change', function () {
         var files = this.files;
         for(var i=0; i<files.length; i++){
-            previewImage(this.files[i]);
+            previewImage(this.files[i], i);
         }
+        add_btn_listeners();
 
     }, false);
 })();

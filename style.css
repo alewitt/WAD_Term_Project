@@ -236,7 +236,7 @@ html{
   left: 0rem;
   bottom: 8rem;
   width: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .modalUploadItem{
@@ -247,6 +247,21 @@ html{
   border: 3px solid #0080c0;
   border-radius: 10px/10px;
   background-color: rgba(128, 210, 45, .8);
+
+  -webkit-animation-name: restoreItem;
+  -webkit-animation-duration: 0.5s;
+  animation-name: restoreItem;
+  animation-duration: 0.5s;
+}
+
+@-webkit-keyframes restoreItem {
+  from {height: 8rem;}
+  to {height: 30rem;}
+}
+
+@keyframes restoreItem {
+  from {height: 8rem;}
+  to {height: 30rem;}
 }
 
 .modalUploadItem .modalUploadImg{
@@ -257,16 +272,27 @@ html{
   width: 40%;
 
   text-align: center;
-
-  /*border: 2px solid black;
-  border-radius: 10px/10px;
-  background-color: rgb(217, 217, 217);*/
 }
 
 .modalUploadItem .modalUploadImg img{
   max-height: 24rem;
   border-radius: 10px;
   border: 2px solid black;
+
+  -webkit-animation-name: restoreItemImg;
+  -webkit-animation-duration: .3s;
+  animation-name: restoreItemImg;
+  animation-duration: .3s;
+}
+
+@-webkit-keyframes restoreItemImg {
+  from {opacity: 0; max-height: 0rem;}
+  to {opacity: 1; max-height: 24rem;}
+}
+
+@keyframes restoreItemImg {
+  from {opacity: 0; max-height: 0rem;}
+  to {opacity: 1; max-height: 24rem;}
 }
 
 .modalUploadForm{
@@ -276,6 +302,21 @@ html{
   bottom: 2.5rem;
   width: 55%;
   padding-top: 2.5%;
+
+  -webkit-animation-name: restoreItemForm;
+  -webkit-animation-duration: 0.5s;
+  animation-name: restoreItemForm;
+  animation-duration: 0.5s;
+}
+
+@-webkit-keyframes restoreItemForm {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes restoreItemForm {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 .modalUploadForm label{
@@ -291,10 +332,41 @@ html{
   left: 5%;
 }
 
-.modalUploadForm #removeImgBtn{
+#modalImgContainer .removeImgBtn{
   position: absolute;
   bottom: 2.5rem;
   right: 5%;
-  left: 70%;
-  width: 25%;
+  width: 15%;
+  height: 2.5rem;
+}
+
+#modalImgContainer .removeImgBtn:hover{
+  color: red;
+}
+
+.removed{
+  height: 8rem;
+
+  -webkit-animation-name: removeItem;
+  -webkit-animation-duration: 0.5s;
+  animation-name: removeItem;
+  animation-duration: 0.5s;
+}
+
+@-webkit-keyframes removeItem {
+  from {height: 30rem;}
+  to {height: 8rem;}
+}
+
+@keyframes removeItem {
+  from {height: 30rem;}
+  to {height: 8rem;}
+}
+
+.removed div{
+  display: none;
+}
+
+#modalImgContainer .removed .removeImgBtn:hover{
+  color: green;
 }
