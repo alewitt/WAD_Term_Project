@@ -38,7 +38,7 @@ function add_btn_listeners(){
 
 (function(){
   /**
-   * Created by remi on 18/01/15.
+   *  main functionality Created by remi on 18/01/15.
    */
     function previewImage(file, count) {
         var galleryId = "modalImgContainer";
@@ -117,16 +117,65 @@ function add_btn_listeners(){
         reader.readAsDataURL(file);
     }
 
-    var uploadfiles = document.querySelector('#fileinput');
-    uploadfiles.addEventListener('change', function () {
+    var previewfiles = document.querySelector('#fileinput');
+    previewfiles.addEventListener('change', function () {
         var files = this.files;
+        // console.log(files);
         for(var i=0; i<files.length; i++){
             previewImage(this.files[i], i);
+            // console.log(files[i]);
         }
         add_btn_listeners();
 
     }, false);
 })();
+
+/**
+ * main functionality Created by remi on 17/01/15.
+ */
+(function () {
+
+    var uploadfiles = document.querySelector('#modalUploadBtn');
+    var fileInput = document.querySelector('#fileinput');
+    uploadfiles.addEventListener('click', function () {
+        var files = fileInput.files;
+        // console.log(files);
+        var filesToUpload = [];
+
+        for(var i=0; i<files.length; i++){
+          var item = document.querySelector('#modalUploadForm_'+i);
+          if (!item.classList.contains('removed')) {
+            filesToUpload.push(files[i]);
+          }
+        }
+        console.log(filesToUpload);
+
+        for(var i=0; i<files.length; i++){
+            // uploadFile(filesToUpload[i]);
+        }
+
+    }, false);
+
+
+    /**
+     * Upload a file
+     * @param file
+     */
+    function uploadFile(file){
+        var url = "db_access.php";
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        xhr.open("POST", url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Every thing ok, file uploaded
+                console.log(xhr.responseText); // handle response.
+            }
+        };
+        fd.append('uploaded_file', file);
+        xhr.send(fd);
+    }
+}());
 
 
 function add_input_change_listener(inputEl, json){
