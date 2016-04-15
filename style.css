@@ -1,23 +1,50 @@
-
-.title{
-  margin-left: 15%;
-  font-size: 5rem;
-  text-shadow: 3px 3px 5px rgba(51, 153, 255, 0.4);
-  border-bottom: 5px groove #424040;
-  width: 26%;
-  line-height: 40px;
-  margin-bottom: -5rem;
+/*$$$$$$$$$$$$$$$$$$$$$$= **Front page styles** =$$$$$$$$$$$$$$$$$$$$$$*/
+/*=========== Generic settings for whole page ===========*/
+div{
+  display: block;
+  box-sizing: border-box;
 }
 
+body{
+  background-color: #c2c5bc;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.42857143;
+  font-size: 14px;
+  margin: 0;
+  display: block;
+  background: url("backgroundIMG.jpg");
+}
+
+html{
+  font-size: 10px;
+  font-family: sans-serif;
+}
+/*=========== end generic settings ===========*/
+
+/*=========== Title of front page ===========*/
+.title{
+  margin-left: 15%;
+  border-bottom: 5px groove #424040;
+  line-height: 13rem;
+  letter-spacing: 1rem;
+
+  font-size: 5rem;
+  text-shadow: 3px 3px 5px rgba(51, 153, 255, 0.4);
+  font-family: Copperplate, fantasy;
+}
+
+/*=========== upload box on the front page ===========*/
 .uploadContainer{
   margin: auto;
-  margin-top: 5%;
   position: relative;
 
-  border: 3px solid #0080c0;
+  border: 3px solid green;
   background-color: #99ddff;
   padding: 2.5rem;
   border-radius: 10px/10px;
+  box-shadow:
+    0 4px 8px 0 rgba(0,0,0,0.2),
+    0 6px 20px 0 rgba(0,0,0,0.2);
 
   height: 16rem;
   width: 70%;
@@ -42,12 +69,17 @@
 #fileinput{
   display: none;
 }
+/*=========== end of upload box ===========*/
 
+/*=========== form/selection box ===========*/
 .formContainer{
-  border: 3px solid #0080c0;
+  border: 3px solid green;
   background-color: #99ddff;
   padding: 2.5rem;
   border-radius: 10px/10px;
+  box-shadow:
+    0 4px 8px 0 rgba(0,0,0,0.2),
+    0 6px 20px 0 rgba(0,0,0,0.2);
 
   min-height: 20rem;
   width: 30%;
@@ -71,26 +103,7 @@
   font-weight: 700;
 }
 
-.imgContainer{
-  border: 3px solid #0080c0;
-  border-radius: 10px/10px;
-  background-color: #99ddff;
-  padding: 2.5rem;
-
-  min-height: 30rem;
-  width: 35%;
-  float: left;
-  margin-top: 2.5%;
-  margin-left: 5%;
-  text-align: center;
-}
-
-.picture{
-  max-width: 100%;
-  max-height: 50rem;
-}
-
-legend {
+legend{
   font-size: 4rem;
   display: block;
   width: 50%;
@@ -111,26 +124,46 @@ fieldset{
   display: block;
   box-sizing: border-box;
 }
+/*=========== end of selection box ===========*/
 
-div{
-  display: block;
-  box-sizing: border-box;
+/*=========== image box on front page ===========*/
+.imgContainer{
+  min-height: 30rem;
+  width: 37.5%;
+  float: left;
+  margin-top: 2.5%;
+  margin-left: 2.5%;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
 }
 
-body {
-  background-color: #c2c5bc;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  line-height: 1.42857143;
-  font-size: 14px;
-  margin: 0;
-  display: block;
+.imgContainer .inner{
+  border: 3px solid green;
+  border-radius: 10px/10px;
+  background-color: #99ddff;
+  padding: 2.5rem;
+  box-shadow:
+    0 4px 8px 0 rgba(0,0,0,0.4),
+    0 6px 20px 0 rgba(0,0,0,0.4);
 }
 
-html{
-  font-size: 10px;
-  font-family: sans-serif;
+.imgContainer img{
+  border: 3px solid rgb(153,153,153);
+  border-radius: 10px/10px;
+
 }
 
+.picture{
+  max-width: 100%;
+  max-height: 50rem;
+}
+/*=========== end of image box ===========*/
+/*$$$$$$$$$$$$$$$$$$$$$$= end front page styles =$$$$$$$$$$$$$$$$$$$$$$*/
+
+/*$$$$$$$$$$$$$$$$$$$$$$= Modal Styles =$$$$$$$$$$$$$$$$$$$$$$*/
+/*=========== Main modal container ===========*/
 .modalContainer{
   display: none;
   position: fixed;
@@ -141,47 +174,21 @@ html{
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.2);
 }
+/*=========== end main modal container ===========*/
 
-.modalContent{
-  margin: 5% auto;
-  width: 65%;
-  height: 75%;
-  position: relative;
-
-  padding: 2.5rem;
-
-  border: 3px solid #0080c0;
-  border-radius: 10px/10px;
-  background-color: #ccffff;
-  box-shadow:
-    0 4px 8px 0 rgba(0,0,0,0.2),
-    0 6px 20px 0 rgba(0,0,0,0.2);
-
-  -webkit-animation-name: modalFromTop;
-  -webkit-animation-duration: 0.5s;
-  animation-name: modalFromTop;
-  animation-duration: 0.5s;
-}
-
-@-webkit-keyframes modalFromTop {
-    from {top: -50px; opacity: 0}
-    to {top: 0; opacity: 1}
-}
-
-@keyframes modalFromTop {
-    from {top: -50px; opacity: 0}
-    to {top: 0; opacity: 1}
-}
-
+/*=========== modal header ===========*/
 .modalHeader{
   position: absolute;;
   top: 0rem;
   left: 0rem;
   width: 100%;
   height: 11rem;
-  border-bottom: 3px solid #0080c0;
+  border-bottom: 3px solid #40503A;
   border-radius: 7px 7px 0px 0px;
-  background-color: rgb(192, 192, 192);
+  background-color: #6F8A66;
+  box-shadow:
+    -4px 0 8px 0 rgba(0,0,0,0.2),
+    -6px 0 20px 0 rgba(0,0,0,0.2);
 }
 
 .modalTitle{
@@ -207,7 +214,9 @@ html{
   cursor: pointer;
   text-decoration: none;
 }
+/*=========== end modal header ===========*/
 
+/*=========== Modal footer ===========*/
 .modalFooter{
   position: absolute;;
   bottom: 0rem;
@@ -215,9 +224,12 @@ html{
   width: 100%;
   padding: 2.5rem;
   height: 8rem;
-  border-top: 3px solid #0080c0;
+  border-top: 3px solid #40503A;
   border-radius: 0px 0px 7px 7px;
-  background-color: rgb(192, 192, 192);
+  background-color: #6F8A66;
+  box-shadow:
+    4px 0 8px 0 rgba(0,0,0,0.2),
+    6px 0 20px 0 rgba(0,0,0,0.2);
 }
 
 .modalUploadBtn{
@@ -229,7 +241,41 @@ html{
   bottom: 2rem;
   top: 2rem;
 }
+/*=========== end modal footer ===========*/
 
+/*=========== **Modal body** ===========*/
+.modalContent{
+  margin: 5% auto;
+  width: 65%;
+  height: 75%;
+  position: relative;
+
+  padding: 2.5rem;
+
+  border: 3px solid #0080c0;
+  border-radius: 10px/10px;
+  background-color: #485443;
+  box-shadow:
+    0 4px 8px 0 rgba(0,0,0,0.2),
+    0 6px 20px 0 rgba(0,0,0,0.2);
+
+  -webkit-animation-name: modalFromTop;
+  -webkit-animation-duration: 0.5s;
+  animation-name: modalFromTop;
+  animation-duration: 0.5s;
+}
+
+@-webkit-keyframes modalFromTop {
+    from {top: -50px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+@keyframes modalFromTop {
+    from {top: -50px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* the gallery. modalUploadItems will be generated here*/
 #modalImgContainer{
   position: absolute;
   top: 11rem;
@@ -239,6 +285,8 @@ html{
   overflow-y: scroll;
 }
 
+/* a box containing a modalUploadImg,
+display name input, and remove button. 1 per upload*/
 .modalUploadItem{
   margin: 2.5rem;
   position: relative;
@@ -246,7 +294,7 @@ html{
 
   border: 3px solid #0080c0;
   border-radius: 10px/10px;
-  background-color: rgba(128, 210, 45, .8);
+  background-color: #7BB1CC;
 
   -webkit-animation-name: restoreItem;
   -webkit-animation-duration: 0.5s;
@@ -264,6 +312,7 @@ html{
   to {height: 30rem;}
 }
 
+/*preview image styling*/
 .modalUploadItem .modalUploadImg{
   position: absolute;
   left: 2.5rem;
@@ -274,6 +323,7 @@ html{
   text-align: center;
 }
 
+/*preview image styling and animation*/
 .modalUploadItem .modalUploadImg img{
   max-height: 24rem;
   border-radius: 10px;
@@ -295,6 +345,7 @@ html{
   to {opacity: 1; max-height: 24rem;}
 }
 
+/*========= display name input ==========*/
 .modalUploadForm{
   position: absolute;
   right: 2.5rem;
@@ -332,7 +383,9 @@ html{
   left: 5%;
   font-size: 16px;
 }
+/*========= end display name input ==========*/
 
+/*the remove button*/
 #modalImgContainer .removeImgBtn{
   position: absolute;
   bottom: 2.5rem;
@@ -340,11 +393,14 @@ html{
   width: 15%;
   height: 2.5rem;
 }
-
 #modalImgContainer .removeImgBtn:hover{
   color: red;
 }
+#modalImgContainer .removed .removeImgBtn:hover{
+  color: green;
+}
 
+/*========= Effects for removing item ==========*/
 .removed{
   height: 8rem;
 
@@ -367,7 +423,7 @@ html{
 .removed div{
   display: none;
 }
+/*========= end effects for removing item ==========*/
+/*=========== **end modal body** ===========*/
 
-#modalImgContainer .removed .removeImgBtn:hover{
-  color: green;
-}
+/*$$$$$$$$$$$$$$$$$$$$$$= end modal styles =$$$$$$$$$$$$$$$$$$$$$$*/
