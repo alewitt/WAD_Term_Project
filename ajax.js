@@ -26,6 +26,14 @@ $(window).click(function(event){
     $('#modalImgContainer').html('');
   }
 });
+function reload_page() {
+  $('#modalImgContainer').html('');
+  $('#selectionField').html('');
+  reset_file_input( $('#fileinput') );
+  addMoodOptions();
+  modalContainer.hide();
+}
+
 
 function add_btn_listeners(){
   $('.removeImgBtn').on('click', function(){
@@ -34,7 +42,6 @@ function add_btn_listeners(){
     $(this).attr('value', 'Restore');
   });
 }
-
 
 (function(){
   /**
@@ -86,20 +93,6 @@ function add_btn_listeners(){
         label.appendChild(br);
         uploadForm.appendChild(label);
 
-        // Description input
-        var label = document.createElement("label");
-        label.innerText = "Description";
-        var br = document.createElement("br");
-        label.appendChild(br);
-        var input = document.createElement("input");
-        input.setAttribute("placeholder", "Josh is in a good mood.");
-        label.appendChild(input);
-        var br = document.createElement("br");
-        label.appendChild(br);
-        var br = document.createElement("br");
-        label.appendChild(br);
-        uploadForm.appendChild(label);
-
         // Remove Buttom
         var input = document.createElement("input");
         input.setAttribute("class", "removeImgBtn");
@@ -137,6 +130,7 @@ function add_btn_listeners(){
 
     var uploadfiles = document.querySelector('#modalUploadBtn');
     var fileInput = document.querySelector('#fileinput');
+
     uploadfiles.addEventListener('click', function () {
         var files = fileInput.files;
         // console.log(files);
@@ -145,15 +139,14 @@ function add_btn_listeners(){
         for(var i=0; i<files.length; i++){
           var item = document.querySelector('#modalUploadForm_'+i);
           if (!item.classList.contains('removed')) {
-            filesToUpload.push(files[i]);
+            filesToUpload.push({'file':files[i], 'index':i});
           }
         }
-        console.log(filesToUpload);
+        // console.log(filesToUpload);
 
-        for(var i=0; i<files.length; i++){
-            // uploadFile(filesToUpload[i]);
+        for(var i=0; i<filesToUpload.length; i++){
+            uploadFile(filesToUpload[i], filesToUpload.length);
         }
-
     }, false);
 
 
@@ -161,8 +154,8 @@ function add_btn_listeners(){
      * Upload a file
      * @param file
      */
-    function uploadFile(file){
-        var url = "db_access.php";
+    function uploadFile(file, total){
+        var url = "db_access_upload.php";
         var xhr = new XMLHttpRequest();
         var fd = new FormData();
         xhr.open("POST", url, true);
@@ -170,12 +163,37 @@ function add_btn_listeners(){
             if (xhr.readyState == 4 && xhr.status == 200) {
                 // Every thing ok, file uploaded
                 console.log(xhr.responseText); // handle response.
+                var json = JSON.parse(xhr.responseText);
+                if(json.result === 'failed'){
+                  alert("Upload Failed for: " + json.file);
+                }
+
+                var completed = counter(false);
+                if(completed === total){
+                  completed = counter(true);
+                  // console.log("completed");
+                  reload_page();
+                }
             }
         };
-        fd.append('uploaded_file', file);
+        fd.append('uploaded_file', file['file']);
+        var item = document.querySelector('#modalUploadForm_'+file['index']);
+        var displayName = item.children[1].children[0].children[1].value;
+        fd.append('display_name', displayName);
         xhr.send(fd);
     }
 }());
+
+var counter = (function (reset) {
+    var counter = 0;
+    return function (reset) {
+      if(reset){
+        return counter = 0;
+      } else {
+        return counter += 1;
+      }
+    }
+})();
 
 
 function add_input_change_listener(inputEl, json){

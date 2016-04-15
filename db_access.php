@@ -67,23 +67,6 @@ try {
     echo json_encode($reply);
   }
 
-  /**
-   * User: remi
-   * Date: 17/01/15
-   * Time: 11:41
-   */
-  if (isset($_FILES['uploaded_file'])) {
-      get_all_data($conn, $names, $urls, $pix_count);
-
-      $name = $pix_count + 1 . '-' . $_FILES['uploaded_file']['name'];
-      if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], "pix/" . $name)){
-          echo $name . " uploaded ...";
-      } else {
-          echo $name . " NOT uploaded ...";
-      }
-
-      exit;
-  }
 
 } catch (PDOException $e) {
   echo 'ERROR ', $e->getMessage();
